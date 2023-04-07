@@ -1,0 +1,10 @@
+<%- include("partials/header") %>
+<h1><%= pageTitle %></h1>
+
+<% postArray.forEach(element =>{ %>
+    <h1><%= element.title %></h1>
+    <p><%= element.content %></p>
+<% }); %>
+
+
+<%- include("partials/footer") %>
