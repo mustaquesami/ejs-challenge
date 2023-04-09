@@ -44,17 +44,15 @@ app.post("/compose", function(req, res){
 });
 
 app.get("/posts/:title", function(req, res){
-  const requestedTitle = req.params.title;
+  const requestedTitle = _.lowerCase(req.params.title);
   postArray.forEach(element =>{
-    if(element.title===requestedTitle){
-      console.log("match found");
-    }else{
-      console.log("match not found");
+    let caseTitle = _.lowerCase(element.title);
+    let caseBody = element.content; 
+    if(caseTitle===requestedTitle){
+      res.render("post",{caseTitle:caseTitle, caseBody: caseBody});
     }
   });
 });
-
-
 
 
 app.listen(3000, function() {
